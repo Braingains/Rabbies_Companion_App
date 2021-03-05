@@ -30,6 +30,10 @@ export default function App() {
   });
   const [markers, setMarkers] = React.useState([]);
 
+  
+
+
+
   if (loadError) return "Error loading maps"
   if (!isLoaded) return "Loading..."
 
@@ -58,10 +62,16 @@ export default function App() {
   ]);
   }}
     >
-      {markers.map(marker => <Marker key={marker.time.toISOString()}
+      {markers.map((marker) => (
+      <Marker 
+      key={marker.time.toISOString()}
       /* maps markers using the Marker import from the library, using time of click as key */
-      position={{lat: marker.lat, lng: marker.lng}} />)}
-
+      position={{lat: marker.lat, lng: marker.lng}} 
+      icon={{ }}
+      
+      />))}
+      
+      
       </GoogleMap> 
   </div>
 
