@@ -23,7 +23,7 @@ Extensions:
 	- Be able to save photos to the DB, have the pics be clickable to show where to get that pic
 	- Have a route selector and show the driving route on the map
 	- Have an alternate route/detour function.
-	- "Around me" feature
+	- Search for nearest pins
 	- Fancy CSS
 	
 	
