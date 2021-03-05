@@ -48,15 +48,21 @@ export default function App() {
     center={center}
     options={options}
     onClick={(event) => {
+      
     setMarkers(current => [...current, {
     //spreads in the current markers and adds in the new one
     lat: event.latLng.lat(),
     lng: event.latLng.lng(),
     time: new Date()
-    }])
-
+    },
+  ]);
   }}
-    ></GoogleMap> 
+    >
+      {markers.map(marker => <Marker key={marker.time.toISOString()}
+      /* maps markers using the Marker import from the library, using time of click as key */
+      position={{lat: marker.lat, lng: marker.lng}} />)}
+
+      </GoogleMap> 
   </div>
 
   );

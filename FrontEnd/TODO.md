@@ -1,12 +1,13 @@
 
 TODO:
 
-- load and display google maps api
+- load and display google maps api ✓
 
 MVP:
 
-- Be able to load and view a map
-- to add a pin to the map and save it on a db
+- Be able to load and view a map ✓
+- to add a pin to the map ✓
+- save pins to db
 - To edit/delete a pin
 - To view all/filter pins by category
 - Populate the map with initial data
