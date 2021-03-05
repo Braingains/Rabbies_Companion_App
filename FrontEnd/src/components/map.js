@@ -1,6 +1,15 @@
-import React from "react";
+import React from 'react';
+import {GoogleMap, withScriptjs, withGoogleMap } from "react-google-maps";
 
-const API_KEY = process.env.REACT_APP_API_KEY;
 
+function Map() {
+    return  (
+        <GoogleMap defaultZoom={10} 
+        defaultCenter={{ lat: 55.9533, lng: 3.1883 }}
+        />
+    );
+}
 
-export default API_KEY
+const WrappedMap = withScriptjs()
+
+export default Map;

@@ -1,14 +1,14 @@
-import './App.css';
-import './components/map'
+import React from "react";
+import Map from "./components/Map"
 
-console.log(process.env.REACT_APP_API_KEY);
 
-function App() {
+
+
+export default function App() {
   return (
     <>
-      <h1>Testy</h1>
+    <Map />
     </>
-  );
-}
-
-export default App;
+  )
+    
+};
