@@ -23,8 +23,8 @@ class TourguideappApplicationTests {
 
 	@Test
 	public void createMarker(){
-		Marker marker = new Marker("Fort Augustus Bush", "Toilet", 57.142757, -4.678571, "Good for a piss", "Ewan");
-		markerRepository.save(marker);
+		Marker marker3 = new Marker("The Golden Jobby", "Attraction", 55.954119, -3.188402, "Somehow makes me miss the old St James centre", "Matt");
+		markerRepository.save(marker3);
 	}
 
 }

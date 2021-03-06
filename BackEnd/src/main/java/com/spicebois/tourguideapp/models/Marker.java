@@ -27,6 +27,7 @@ public class Marker {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
 //    private ArrayList<Routes> tourRoutes;
 
 
