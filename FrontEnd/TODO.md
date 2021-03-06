@@ -22,6 +22,7 @@ Extensions:
 
 - Be able to catagorise markers by route/tour
 - Create designs for custom markers
+- implement different interface methods (e.g double-click)
 - Extend the functionality outside of Scotland
 - Have the app automatically find the user's current location.
 - Be able to rate markers with stars etc
