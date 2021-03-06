@@ -1,12 +1,32 @@
 package com.spicebois.tourguideapp.models;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name="markers")
 public class Marker {
+
+    @Column(name="name")
     private String name;
+
+    @Column(name="category")
     private String category;
+
+    @Column(name="lat")
     private double lat;
+
+    @Column(name="lng")
     private double lng;
+
+    @Column(name="notes")
     private String notes;
+
+    @Column(name="user")
     private String user;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 //    private ArrayList<Routes> tourRoutes;
 
 
@@ -20,6 +40,11 @@ public class Marker {
     }
 
 //    User may eventually be a class
+//    One user to many markers
+
+    public Marker(){
+
+    }
 
     public String getName() {
         return name;
@@ -67,5 +92,13 @@ public class Marker {
 
     public void setUser(String user) {
         this.user = user;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }
