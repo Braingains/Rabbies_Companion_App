@@ -1,5 +1,6 @@
 package com.spicebois.tourguideapp;
 
+import com.spicebois.tourguideapp.enums.CategoryType;
 import com.spicebois.tourguideapp.models.Marker;
 import com.spicebois.tourguideapp.repositories.MarkerRepository;
 import org.junit.jupiter.api.Test;
@@ -23,8 +24,14 @@ class TourguideappApplicationTests {
 
 	@Test
 	public void createMarker(){
-		Marker marker3 = new Marker("The Golden Jobby", "Attraction", 55.954119, -3.188402, "Somehow makes me miss the old St James centre", "Matt");
+		Marker marker3 = new Marker("The Golden Jobby", CategoryType.ATTRACTION, 55.954119, -3.188402, "Somehow makes me miss the old St James centre", "Matt");
 		markerRepository.save(marker3);
+	}
+
+	@Test
+	public void hasCategoryType(){
+		Marker marker3 = new Marker("The Golden Jobby", CategoryType.ATTRACTION, 55.954119, -3.188402, "Somehow makes me miss the old St James centre", "Matt");
+		assertEquals(CategoryType.ATTRACTION, marker3.getCategoryType());
 	}
 
 }

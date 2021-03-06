@@ -1,5 +1,6 @@
 package com.spicebois.tourguideapp.controllers;
 
+import com.spicebois.tourguideapp.enums.CategoryType;
 import com.spicebois.tourguideapp.models.Marker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,20 +17,35 @@ public class MarkerController {
     MarkerRepository markerRepository;
 
     @GetMapping(value="/markers")
-    public ResponseEntity<List<Marker>> getAllMarkers(
-        //FILTER
-        @RequestParam(name = "category", required = false) String category
-        ){
-            if (category != null){
-                return new ResponseEntity(markerRepository.findByCategory(category), HttpStatus.OK);
-            }
-
+    public ResponseEntity<List<Marker>> getAllMarkers(){
         return new ResponseEntity<>(markerRepository.findAll(), HttpStatus.OK);
     }
 
+    @GetMapping(value="/markers/categoryType/{categoryType}")
+    public ResponseEntity<List<Marker>> getMarkerByCategoryType(@PathVariable CategoryType categoryType){
+        return new ResponseEntity<>(markerRepository.findByCategoryType(categoryType), HttpStatus.OK);
+    }
+
+
+//    @GetMapping(value="/markers")
+//    public ResponseEntity<List<Marker>> getAllMarkers(
+//        //FILTER
+//        @RequestParam(name = "category", required = false) CategoryType categoryType,
+//        @RequestParam(name = "user", required = false) String user
+//        ){
+//            if (categoryType != null){
+//                return new ResponseEntity(markerRepository.findByCategoryType(categoryType), HttpStatus.OK);
+//            }
+//            if (user != null){
+//                return new ResponseEntity(markerRepository.findByUserIgnoreCase(user), HttpStatus.OK);
+//            }
+//
+//        return new ResponseEntity<>(markerRepository.findAll(), HttpStatus.OK);
+//    }
+
     @GetMapping(value="markers/category/{id}")
-    public ResponseEntity<List<Marker>> getMarkersByCategory(@PathVariable String category){
-        return new ResponseEntity<>(markerRepository.findByCategory(category), HttpStatus.OK);
+    public ResponseEntity<List<Marker>> getMarkersByEnum(@PathVariable ("categoryType") CategoryType categoryType){
+        return new ResponseEntity<>(markerRepository.findByCategoryType(categoryType), HttpStatus.OK);
     }
 
     @PostMapping(value="/markers")

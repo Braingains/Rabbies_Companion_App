@@ -1,5 +1,8 @@
 package com.spicebois.tourguideapp.models;
 
+import com.spicebois.tourguideapp.enums.CategoryType;
+import jdk.jfr.Category;
+
 import javax.persistence.*;
 
 @Entity
@@ -10,7 +13,9 @@ public class Marker {
     private String name;
 
     @Column(name="category")
-    private String category;
+    @Enumerated(EnumType.STRING)
+//    makes enum compatible with query name thing
+    private CategoryType categoryType;
 
     @Column(name="lat")
     private double lat;
@@ -31,9 +36,9 @@ public class Marker {
 //    private ArrayList<Routes> tourRoutes;
 
 
-    public Marker(String name, String category, double lat, double lng, String notes, String user) {
+    public Marker(String name, CategoryType categoryType, double lat, double lng, String notes, String user) {
         this.name = name;
-        this.category = category;
+        this.categoryType = categoryType;
         this.lat = lat;
         this.lng = lng;
         this.notes = notes;
@@ -55,12 +60,12 @@ public class Marker {
         this.name = name;
     }
 
-    public String getCategory() {
-        return category;
+    public CategoryType getCategoryType() {
+        return categoryType;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
+    public void setCategoryType(CategoryType categoryType) {
+        this.categoryType = categoryType;
     }
 
     public double getLat() {
