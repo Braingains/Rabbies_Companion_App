@@ -3,8 +3,12 @@ TODO:
 
 - load and display google maps api ✓
 - add markers to map ✓
-- make marker catagories with custom icons/colours (photostop, parking, toilets, food etc)
-- CRUD functionality for markers
+- CRUD functionality for pins ✓
+- make pin catagories
+- understand how to connect front and back end. and do it..
+- make custom icons/colours (photostop, parking, toilets, food etc)
+- Refactor code into multiple components
+- 
 
 MVP:
 
@@ -22,7 +26,6 @@ Extensions:
 
 - Be able to catagorise markers by route/tour
 - Create designs for custom markers
-- implement different interface methods (e.g double-click)
 - Extend the functionality outside of Scotland
 - Have the app automatically find the user's current location.
 - Be able to rate markers with stars etc
@@ -42,3 +45,4 @@ Advanced Extensions:
 - Track user's GPS routes
 - Specific functionality for user types - e.g Guide/Ops
 - Integrate it into Rabbies' systems
+

@@ -49,9 +49,7 @@ const PinContainer = () => {
     }
 
     return (
-        <>
-            <h1>Pin Container</h1>
-        </>
+        
 
 
 

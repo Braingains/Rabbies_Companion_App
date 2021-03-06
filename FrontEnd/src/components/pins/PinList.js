@@ -1,0 +1,1 @@
+//maps each pin into a list
