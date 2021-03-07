@@ -1,4 +1,13 @@
-# See http://help.github.com/ignore-files/ for more about ignoring files.
+See http://help.github.com/ignore-files/ for more about ignoring files.
+
+
+
+
+# Google Maps Api Key
+.env
+
+
+
 
 # compiled output
 /dist
@@ -76,8 +85,6 @@ jspm_packages/
 # Yarn Integrity file
 .yarn-integrity
 
-# dotenv environment variables file
-.env
 
 # next.js build output
 .next

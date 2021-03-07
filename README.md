@@ -37,3 +37,6 @@ Advanced Extensions:
 	- Track user's GPS routes
 	- Specific functionality for user types - e.g Guide/Ops
 	- Integrate it into Rabbies' systems
+
+Reminder: do not deploy app with API key. Use key management system.
+https://betterprogramming.pub/how-to-hide-your-api-keys-c2b952bc07e6
