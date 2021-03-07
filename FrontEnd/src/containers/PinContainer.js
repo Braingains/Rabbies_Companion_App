@@ -34,14 +34,14 @@ const PinContainer = () => {
     
     const handleDelete = (categoryType) =>  {
         const request = new Request();
-          const url = "/pins/" + categoryType
+          const url = "/api/pins/" + categoryType
           request.delete(url)
             .then(() => window.location = "/pins")
     }
     
     const handlePost = (pin) => {
         const request = new Request();
-        request.post("/pins", pin)
+        request.post("/api/pins", pin)
            .then(() => window.location = '/pins')
       }
     

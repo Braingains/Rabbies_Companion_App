@@ -33,13 +33,13 @@ class PinForm extends Component {
 
     handleSubmit(event){
         event.preventDefault();
-        if(this.state.pin.id){;
-          this.props.onUpdate(this.state.pin)
-        } else {
-          console.log("Called");
+        // if(this.state.pin.id){;
+        //   this.props.onUpdate(this.state.pin)
+        // } else {
+        //   console.log("Called");
           this.props.onCreate(this.state.pin);
-        }
     }
+        
 
     render(){
         return (

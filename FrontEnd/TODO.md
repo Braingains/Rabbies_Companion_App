@@ -3,12 +3,15 @@ TODO:
 
 - load and display google maps api ✓
 - add markers to map ✓
-- CRUD functionality for pins ✓
-- make pin catagories
-- understand how to connect front and back end. and do it..
-- make custom icons/colours (photostop, parking, toilets, food etc)
-- Refactor code into multiple components
-- 
+- CRUD functionality for pins (back end) ✓
+- understand how to connect front and back end. and do it.. ✓
+- Refactor code into multiple components ✓
+- make pin catagories (ENUM) ✓
+- when you create a new pin it pulls up PinForm.js, with the ability to save
+- when you click an existing pin it pulls up PinDetail.js, with the ability to delete and update.
+- make custom icons/colours based on catagory
+- have submission form to save data to database
+- connect submission form to pin drop
 
 MVP:
 
