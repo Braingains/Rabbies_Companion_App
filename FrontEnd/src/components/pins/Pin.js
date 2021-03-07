@@ -7,7 +7,7 @@ const Pin = ({pin}) => {
         return <p>Loading...</p>
     }
 
-    const url = "/pins" + pin.id
+    const url = "/pins/" + pin.id;
 
     return (
         <>

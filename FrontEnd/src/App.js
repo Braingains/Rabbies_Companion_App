@@ -1,8 +1,7 @@
 import React from 'react';
 import {GoogleMap, useLoadScript, Marker, InfoWindow } from "@react-google-maps/api";
-import { formatRelative } from "date-fns";
+// import { formatRelative } from "date-fns";
 import PinContainer from './containers/PinContainer'
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 // import "@reach/combobox/styles.css"
 
@@ -26,22 +25,17 @@ const options = {
 } 
 
 export default function App() {
+
   const {isLoaded, loadError} = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_API_KEY,
     libraries,
   });
   const [markers, setMarkers] = React.useState([]);
 
-  
-
-
-
   if (loadError) return "Error loading maps"
   if (!isLoaded) return "Loading..."
 
   return (
-  
-    <Router>
   <div>
     <h1>
     <span role="img" aria-label="Saltire">🏴󠁧󠁢󠁳󠁣󠁴󠁿 </span>
@@ -72,15 +66,11 @@ export default function App() {
       key={marker.time.toISOString()}
       /* maps markers using the Marker import from the library, using time of click as key */
       position={{lat: marker.lat, lng: marker.lng}} 
-      icon={{ }}
+      // icon={{ }}
       
       />))}
-      
-      
       </GoogleMap> 
   </div>
-  </Router>
-
   );
 }
 

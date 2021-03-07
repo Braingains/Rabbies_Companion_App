@@ -1,9 +1,10 @@
-import { getAllByAltText } from '@testing-library/dom';
-import {Route, Switch} from 'react-router-dom';
+// import { getAllByAltText } from '@testing-library/dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import PinList from "../components/pins/PinList";
 import PinDetail from "../components/pins/PinDetail";
 import React, { useState, useEffect } from 'react';
 import Request from '../helpers/request';
+import PinForm from "../components/pins/PinForm"
 
 const PinContainer = () => {
 
@@ -11,35 +12,38 @@ const PinContainer = () => {
 
     useEffect(() => {
         getAllData();
-    }, [pins]);
+    }, []);
 
     const getAllData = () => {
+        
         console.log("Loading...");
-        const request = new Request();
-        const pinPromise = request.get("/pins")
 
-        // Promise.all might need later
-    } 
+        const request = new Request();
+        request.get('/api/pins')
+        .then((data) => {
+            setPins(data);
+        })
+    }
 
     const findByCategoryType = (categoryType) => {
         console.log(categoryType, pins);
         return pins.find((pin) => {
             return pin.categoryType === categoryType;
         });
-      }
+    }
     
-    const handleDelete = (id) =>  {
+    const handleDelete = (categoryType) =>  {
         const request = new Request();
-          const url = "/pins/" + id
+          const url = "/pins/" + categoryType
           request.delete(url)
             .then(() => window.location = "/pins")
-        }
+    }
     
-    // const handlePost = (pin) => {
-    //     const request = new Request();
-    //     request.post("/pins", pin)
-    //        .then(() => window.location = '/pins')
-    //   }
+    const handlePost = (pin) => {
+        const request = new Request();
+        request.post("/pins", pin)
+           .then(() => window.location = '/pins')
+      }
     
     // const handleUpdate = (pin) => {
     //     const request = new Request();
@@ -53,31 +57,29 @@ const PinContainer = () => {
     }
 
     return (
-
+        <Router>
         <>
-      
-      <Switch>
+        <Switch>
+            <Route exact path = "/pins/new" render={() =>
+            {return <PinForm onCreate={handlePost}/>
+            }}/>
+        
+            <Route exact path="/pins/categoryType" render={(props) =>{
+                const categoryType = props.match.params.categoryType;
+                const pin = findByCategoryType(categoryType);
+                return <PinDetail pin={pin}
+                onDelete={handleDelete}
+                />
+            }}/>
 
-
-      <Route exact path="/pins/categoryType" render={(props) =>{
-        const categoryType = props.match.params.categoryType;
-        const pin = findByCategoryType(categoryType);
-        return <PinDetail pin={pin}
-        onDelete={handleDelete}
-          
-        />
-      }}/>
-
-        <Route render={() => {
-        return <PinList pins={pins}/>
-      }} />
-
-      </Switch>
-     
-      </>
-      
-
+            <Route render={(props) => {
+            return <PinList pins={pins}/>
+            }} />
+        </Switch>
+        </>
+        </Router>
     )
 }
+
 
 export default PinContainer;
