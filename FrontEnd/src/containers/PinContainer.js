@@ -31,25 +31,45 @@ const PinContainer = () => {
             .then(() => window.location = "/pins")
         }
     
-    const handlePost = (pin) => {
-        const request = new Request();
-        request.post("/pins", pin)
-           .then(() => window.location = '/pins')
-      }
+    // const handlePost = (pin) => {
+    //     const request = new Request();
+    //     request.post("/pins", pin)
+    //        .then(() => window.location = '/pins')
+    //   }
     
-    const handleUpdate = (pin) => {
-        const request = new Request();
-        request.patch('/pins/' + pin.id, pin).then(() => {
-            window.location = '/pins/' + pin.id
-        })
-      }
+    // const handleUpdate = (pin) => {
+    //     const request = new Request();
+    //     request.patch('/pins/' + pin.id, pin).then(() => {
+    //         window.location = '/pins/' + pin.id
+    //     })
+    //   }
 
     if (!{pins}) {
         return null
     }
 
     return (
-        
+
+        <>
+      <Switch>
+
+
+      <Route exact path="/pins/:id" render={(props) =>{
+        const id = props.match.params.id;
+        const pin = findPinById(id);
+        return <PinDetail pin={pin}
+        onDelete={handleDelete}
+          
+        />
+      }}/>
+
+        <Route render={() => {
+        return <PinList pin={pin}/>
+      }} />
+
+      </Switch>
+      </>
+      
 
 
 

@@ -1,13 +1,12 @@
 package com.spicebois.tourguideapp.models;
 
 import com.spicebois.tourguideapp.enums.CategoryType;
-import jdk.jfr.Category;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name="markers")
-public class Marker {
+@Table(name="pins")
+public class Pin {
 
     @Column(name="name")
     private String name;

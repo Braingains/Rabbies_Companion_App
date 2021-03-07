@@ -6,24 +6,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import com.spicebois.tourguideapp.repositories.MarkerRepository;
+import com.spicebois.tourguideapp.repositories.PinRepository;
 
 import java.util.List;
 
 @RestController
-public class MarkerController {
+public class PinController {
 
     @Autowired
-    MarkerRepository markerRepository;
+    PinRepository pinRepository;
 
-    @GetMapping(value="/markers")
-    public ResponseEntity<List<Pin>> getAllMarkers(){
-        return new ResponseEntity<>(markerRepository.findAll(), HttpStatus.OK);
+    @GetMapping(value="/pins")
+    public ResponseEntity<List<Pin>> getAllPins(){
+        return new ResponseEntity<>(pinRepository.findAll(), HttpStatus.OK);
     }
 
-    @GetMapping(value="/markers/categoryType/{categoryType}")
-    public ResponseEntity<List<Pin>> getMarkerByCategoryType(@PathVariable CategoryType categoryType){
-        return new ResponseEntity<>(markerRepository.findByCategoryType(categoryType), HttpStatus.OK);
+    @GetMapping(value="/pins/categoryType/{categoryType}")
+    public ResponseEntity<List<Pin>> getPinByCategoryType(@PathVariable CategoryType categoryType){
+        return new ResponseEntity<>(pinRepository.findByCategoryType(categoryType), HttpStatus.OK);
     }
 
 
@@ -48,22 +48,22 @@ public class MarkerController {
 //        return new ResponseEntity<>(markerRepository.findByCategoryType(categoryType), HttpStatus.OK);
 //    }
 
-    @PostMapping(value="/markers")
-    public ResponseEntity<Pin> postMarker(@RequestBody Pin pin){
-        markerRepository.save(pin);
+    @PostMapping(value="/pins")
+    public ResponseEntity<Pin> postPin(@RequestBody Pin pin){
+        pinRepository.save(pin);
         return new ResponseEntity<>(pin, HttpStatus.CREATED);
     }
 
-    @PatchMapping(value="/markers/{id}")
-    public ResponseEntity<Pin> updateMarker(@RequestBody Pin pin){
-        markerRepository.save(pin);
+    @PatchMapping(value="/pins/{id}")
+    public ResponseEntity<Pin> updatePin(@RequestBody Pin pin){
+        pinRepository.save(pin);
         return new ResponseEntity<>(pin, HttpStatus.OK);
     }
 
-    @DeleteMapping(value = "/markers/{id}")
-    public ResponseEntity<Pin> deleteMarker(@PathVariable Long id) {
-        Pin found = markerRepository.getOne(id);
-        markerRepository.delete(found);
+    @DeleteMapping(value = "/pins/{id}")
+    public ResponseEntity<Pin> deletePin(@PathVariable Long id) {
+        Pin found = pinRepository.getOne(id);
+        pinRepository.delete(found);
         return new ResponseEntity<>(null, HttpStatus.OK);
     }
 

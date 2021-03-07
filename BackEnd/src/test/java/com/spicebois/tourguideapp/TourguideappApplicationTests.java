@@ -1,8 +1,8 @@
 package com.spicebois.tourguideapp;
 
 import com.spicebois.tourguideapp.enums.CategoryType;
-import com.spicebois.tourguideapp.models.Marker;
-import com.spicebois.tourguideapp.repositories.MarkerRepository;
+import com.spicebois.tourguideapp.models.Pin;
+import com.spicebois.tourguideapp.repositories.PinRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,22 +16,22 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class TourguideappApplicationTests {
 
 	@Autowired
-	MarkerRepository markerRepository;
+	PinRepository pinRepository;
 
 	@Test
 	void contextLoads() {
 	}
 
 	@Test
-	public void createMarker(){
-		Marker marker3 = new Marker("The Golden Jobby", CategoryType.ATTRACTION, 55.954119, -3.188402, "Somehow makes me miss the old St James centre", "Matt");
-		markerRepository.save(marker3);
+	public void createPin(){
+		Pin pin3 = new Pin("The Golden Jobby", CategoryType.ATTRACTION, 55.954119, -3.188402, "Somehow makes me miss the old St James centre", "Matt");
+		pinRepository.save(pin3);
 	}
 
 	@Test
 	public void hasCategoryType(){
-		Marker marker3 = new Marker("The Golden Jobby", CategoryType.ATTRACTION, 55.954119, -3.188402, "Somehow makes me miss the old St James centre", "Matt");
-		assertEquals(CategoryType.ATTRACTION, marker3.getCategoryType());
+		Pin pin3 = new Pin("The Golden Jobby", CategoryType.ATTRACTION, 55.954119, -3.188402, "Somehow makes me miss the old St James centre", "Matt");
+		assertEquals(CategoryType.ATTRACTION, pin3.getCategoryType());
 	}
 
 }
