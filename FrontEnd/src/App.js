@@ -1,6 +1,8 @@
 import React from 'react';
 import {GoogleMap, useLoadScript, Marker, InfoWindow } from "@react-google-maps/api";
 import { formatRelative } from "date-fns";
+import PinContainer from './containers/PinContainer'
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 // import "@reach/combobox/styles.css"
 
@@ -39,12 +41,15 @@ export default function App() {
 
   return (
   
+    <Router>
   <div>
     <h1>
     <span role="img" aria-label="Saltire">🏴󠁧󠁢󠁳󠁣󠁴󠁿 </span>
     Rabbies
     <span role="img" aria-label="bus"> 🚎</span>
     </h1>
+
+    <PinContainer/>
 
     <GoogleMap 
     mapContainerStyle={mapContainerStyle} 
@@ -74,6 +79,7 @@ export default function App() {
       
       </GoogleMap> 
   </div>
+  </Router>
 
   );
 }

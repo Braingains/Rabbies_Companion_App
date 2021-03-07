@@ -18,3 +18,5 @@ const PinDetail = ({pin, onDelete}) => {
         </div>
     )
 }
+
+export default PinDetail;

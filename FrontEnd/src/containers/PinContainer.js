@@ -1,5 +1,9 @@
 import { getAllByAltText } from '@testing-library/dom';
-import React, { useEffect } from 'react';
+import {Route, Switch} from 'react-router-dom';
+import PinList from "../components/pins/PinList";
+import PinDetail from "../components/pins/PinDetail";
+import React, { useState, useEffect } from 'react';
+import Request from '../helpers/request';
 
 const PinContainer = () => {
 
@@ -17,10 +21,10 @@ const PinContainer = () => {
         // Promise.all might need later
     } 
 
-    const findPinById = (id) => {
-        console.log(id, pins);
-        return pins.find((pins) => {
-            return pin.id === parseInt(id);
+    const findByCategoryType = (categoryType) => {
+        console.log(categoryType, pins);
+        return pins.find((pin) => {
+            return pin.categoryType === categoryType;
         });
       }
     
@@ -51,12 +55,13 @@ const PinContainer = () => {
     return (
 
         <>
+      
       <Switch>
 
 
-      <Route exact path="/pins/:id" render={(props) =>{
-        const id = props.match.params.id;
-        const pin = findPinById(id);
+      <Route exact path="/pins/categoryType" render={(props) =>{
+        const categoryType = props.match.params.categoryType;
+        const pin = findByCategoryType(categoryType);
         return <PinDetail pin={pin}
         onDelete={handleDelete}
           
@@ -64,15 +69,13 @@ const PinContainer = () => {
       }}/>
 
         <Route render={() => {
-        return <PinList pin={pin}/>
+        return <PinList pins={pins}/>
       }} />
 
       </Switch>
+     
       </>
       
-
-
-
 
     )
 }

@@ -7,7 +7,7 @@ const PinList = ({pins}) => {
         return (<p>Loading...</p>)
     }
 
-    const PinsNodes = pins.map((pin, index) => {
+    const pinsNodes = pins.map((pin, index) => {
         return (
             <li key={index} className="component-item">
             <div className="component">
