@@ -36,7 +36,7 @@ public class Marker {
 //    private ArrayList<Routes> tourRoutes;
 
 
-    public Marker(String name, CategoryType categoryType, double lat, double lng, String notes, String user) {
+    public Pin(String name, CategoryType categoryType, double lat, double lng, String notes, String user) {
         this.name = name;
         this.categoryType = categoryType;
         this.lat = lat;
@@ -46,9 +46,9 @@ public class Marker {
     }
 
 //    User may eventually be a class
-//    One user to many markers
+//    One user to many pins
 
-    public Marker(){
+    public Pin(){
 
     }
 
