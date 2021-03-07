@@ -25,16 +25,21 @@ const PinContainer = () => {
         })
     }
 
-    const findByCategoryType = (categoryType) => {
-        console.log(categoryType, pins);
+    const getPinByID = (id) => {
         return pins.find((pin) => {
-            return pin.categoryType === categoryType;
+            return pin.id === parseInt(id);
         });
     }
+
+    // const findByCategoryType = (categoryType) => {
+    //     return pins.find((pin) => {
+    //         return pin.categoryType === categoryType;
+    //     });
+    // }
     
-    const handleDelete = (categoryType) =>  {
+    const handleDelete = (id) =>  {
         const request = new Request();
-          const url = "/api/pins/" + categoryType
+          const url = "/api/pins/" + id
           request.delete(url)
             .then(() => window.location = "/pins")
     }
@@ -45,17 +50,16 @@ const PinContainer = () => {
            .then(() => window.location = '/pins')
       }
     
-    // const handleUpdate = (pin) => {
-    //     const request = new Request();
-    //     request.patch('/pins/' + pin.id, pin).then(() => {
-    //         window.location = '/pins/' + pin.id
-    //     })
-    //   }
+    const handleUpdate = (pin) => {
+        const request = new Request();
+        request.patch('/api/pins/' + pin.id, pin).then(() => {
+            window.location = '/pins/' + pin.id
+        })
+      }
 
     if (!{pins}) {
         return null
     }
-
     return (
         <Router>
         <>
@@ -64,15 +68,26 @@ const PinContainer = () => {
             {return <PinForm onCreate={handlePost}/>
             }}/>
         
-            <Route exact path="/pins/categoryType" render={(props) =>{
-                const categoryType = props.match.params.categoryType;
-                const pin = findByCategoryType(categoryType);
-                return <PinDetail pin={pin}
-                onDelete={handleDelete}
+            <Route exact path="/pins/:id/edit" render={(props) =>{
+                const id = props.match.params.id;
+                const pin = getPinByID(id);
+                return <PinForm pin={pin}
+                onUpdate={handleUpdate}
                 />
             }}/>
 
-            <Route render={(props) => {
+            <Route exact path="/pins/:id" render={(props) => {
+                const id = props.match.params.id;
+                const pin = getPinByID(id);
+                return <PinDetail pin={pin}
+                onDelete={handleDelete}
+                onUpdate={handleUpdate} 
+                />
+            }} />
+
+            
+
+            <Route render={() => {
             return <PinList pins={pins}/>
             }} />
         </Switch>
