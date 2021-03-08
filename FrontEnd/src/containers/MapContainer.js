@@ -1,5 +1,6 @@
 import React from 'react';
 import {GoogleMap, useLoadScript, Marker, InfoWindow } from "@react-google-maps/api";
+import PinForm from '../components/pins/PinForm';
 // import { formatRelative } from "date-fns";
 // import "@reach/combobox/styles.css"
 
@@ -84,9 +85,10 @@ const MapContainer = () => {
           <InfoWindow position= {{lat: selected.lat, lng: selected.lng}} 
           onCloseClick={() => {
             setSelected(null);
+            //sets selected back to null, so we can toggle it on or off
           }}>
             <div>
-              <h1>Form goes here</h1>
+              <PinForm/>
             </div>
           </InfoWindow>) : null}
           </GoogleMap> 
