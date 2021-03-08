@@ -28,18 +28,10 @@ const MapContainer = () => {
         libraries,
       });
       const [markers, setMarkers] = React.useState([]);
-    
-      if (loadError) return "Error loading maps"
-      if (!isLoaded) return "Loading..."
+      const [selected, setSelected] = React.useState(null);
 
-      
-      return (
-        <GoogleMap 
-        mapContainerStyle={mapContainerStyle} 
-        zoom={8} 
-        center={center}
-        options={options}
-        onClick={(event) => {
+      const onMapClick = React.useCallback((event) => {
+          // the function only changes if the value in [] changes, so does not trigger rerender 
           
         setMarkers(current => [...current, {
         //spreads in the current markers and adds in the new one
@@ -48,7 +40,28 @@ const MapContainer = () => {
         time: new Date()
         },
       ]);
-      }}
+      }, []);
+
+
+      const mapRef = React.useRef();
+      const onMapLoad = React.useCallback((map) => {
+        mapRef.current = map;
+      }, []);
+
+
+    
+    if (loadError) return "Error loading maps";
+    if (!isLoaded) return "Loading...";
+
+      
+      return (
+        <GoogleMap 
+        mapContainerStyle={mapContainerStyle} 
+        zoom={8} 
+        center={center}
+        options={options}
+        onClick={onMapClick}
+        onLoad ={onMapLoad}
         >
           {markers.map((marker) => (
           <Marker 
@@ -60,11 +73,22 @@ const MapContainer = () => {
             scaledSize: new window.google.maps.Size(30,30),
             origin: new window.google.maps.Point(0,0),
             anchor: new window.google.maps.Point(15,15)
-
-
+           }}
+           onClick={() => {
+             setSelected(marker);
            }}
           
           />))}
+
+          {selected ? (
+          <InfoWindow position= {{lat: selected.lat, lng: selected.lng}} 
+          onCloseClick={() => {
+            setSelected(null);
+          }}>
+            <div>
+              <h1>Form goes here</h1>
+            </div>
+          </InfoWindow>) : null}
           </GoogleMap> 
       )
 }
