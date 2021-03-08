@@ -1,14 +1,14 @@
 import React, {useState, useEffect} from "react";
 
-const PinForm = ({pin, onCreate, onUpdate}) => {
+const PinForm = ({pin, onCreate, onUpdate, position}) => {
 
 
     const [statePin, setStatePin] = useState(
         {
             name: "",
             categoryType: "",
-            lat: 0.0,
-            lng: 0.0,
+            lat: position.lat,
+            lng: position.lng,
             notes: "",
             user: ""
         }
@@ -53,8 +53,6 @@ const PinForm = ({pin, onCreate, onUpdate}) => {
         <form onSubmit={handleSubmit}>
         <input type="text" placeholder="Name" name="name" onChange={handleChange} value={statePin.name} />
         <input type="text" placeholder="Category" name="categoryType" onChange={handleChange} value={statePin.categoryType} />
-        <input type="decimal" placeholder="Latitude" name="lat" onChange={handleChange} value={statePin.lat}/>
-        <input type="decimal" placeholder="Longitude" name="lng" onChange={handleChange} value={statePin.lng}/>
         <input type="text" placeholder="Notes" name="notes" onChange={handleChange} value={statePin.notes} />
         <input type="text" placeholder="User" name="user" onChange={handleChange} value={statePin.user} />
         <button type="submit">Save</button>
