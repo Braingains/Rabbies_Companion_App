@@ -13,7 +13,7 @@ const MainContainer = () => {
     <>
     <NavBar />
     <Switch>
-    {/* <Route path = "/pins" component = {PinContainer} /> */}
+    <Route path = "/pins" component = {PinContainer} />
     </Switch>
     <MapContainer />
     {/* <TestMap/> */}

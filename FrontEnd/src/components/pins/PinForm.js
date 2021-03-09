@@ -7,8 +7,8 @@ const PinForm = ({pin, onCreate, onUpdate, position}) => {
         {
             name: "",
             categoryType: "",
-            lat: position.lat,
-            lng: position.lng,
+            lat: 0,
+            lng: 0,
             notes: "",
             user: ""
         }

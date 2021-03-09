@@ -1,12 +1,17 @@
 import React from 'react';
 import MainContainer from "./containers/MainContainer";
+import './App.css';
+import L from 'leaflet';
+import {Map, TileLayer, Marker, Popup} from 'react-leaflet';
+
+class App extends Component {
 
 
 
-export default function App() {
 
   
-  return (
+  render(){
+    return (
     <>
     <div>
       <h1>
@@ -23,4 +28,5 @@ export default function App() {
 }
 
 
-
+}
+export default App;
