@@ -1,0 +1,20 @@
+{
+    "pins":
+    [{
+    "name": "Edinburgh Castle",
+    "category": "Attraction",
+    "coordinates": [55.948612, -3.200833],
+    "notes": "A big castle",
+    "user": "Ewan",
+    "id": 1
+    },
+    {
+    "name": "Test",
+    "category": "Attraction",
+    "coordinates": [54.948612, -4.200833],
+    "notes": "test",
+    "user": "Test",
+    "id": 2}
+    ]
+    
+}
