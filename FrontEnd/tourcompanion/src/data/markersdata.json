@@ -3,17 +3,21 @@
     [{
     "name": "Edinburgh Castle",
     "category": "Attraction",
-    "coordinates": [55.948612, -3.200833],
     "notes": "A big castle",
     "user": "Ewan",
+    "coordinates":
+    {"lat": 55.948612,
+    "lng": -3.200833},
     "id": 1
     },
     {
     "name": "Test",
     "category": "Attraction",
-    "coordinates": [54.948612, -4.200833],
     "notes": "test",
     "user": "Test",
+        "coordinates":
+        {"lat": 54.948612,
+        "lng": -4.200833},
     "id": 2}
     ]
     
