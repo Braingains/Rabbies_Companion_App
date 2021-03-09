@@ -1,5 +1,5 @@
 import './App.css';
-import React from 'react';
+import React, { useState } from 'react';
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
 import { Icon } from "leaflet";
 import * as mapData from "./data/markersdata.json";
@@ -7,29 +7,32 @@ import * as mapData from "./data/markersdata.json";
 
 
 function App() {
-
-
+  // const [activePin, setActivePin] = useState(null);
+  // const position = [51.505, -0.09]
 
 
   return (
-    <div className="App">
-      <h1>Fuck google maps</h1>
-      <MapContainer center={[56.355233, -4.07513]} zoom={8}>
-      <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" 
-      attribution="&copy; <a href=&quot;https://www.openstreetmap.org/copyright&quot;>OpenStreetMap</a>
-       contributors" 
-       />
-
-       {mapData.pins.map(pin => (
-       <Marker key={pin.id} position={[
+    <MapContainer center={[56.355233, -4.07513]} zoom={8}>
+    <TileLayer
+      attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+      url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+    />
+    {mapData.pins.map(pin => (
+    <Marker key={pin.id} position={[
          pin.coordinates[0],
          pin.coordinates[1]
-       ]}
-       />
-       ))}
-</MapContainer>      
-      </div>
-  );
+       ]}>
+      <Popup>
+        <h2>{pin.name}</h2>
+        <p>{pin.category}</p>
+        <p>{pin.notes}</p>
+        <p>added by: {pin.user}</p>
+      </Popup>
+    </Marker>
+    ))}
+  </MapContainer>
+)
+  
 }
 
 export default App;
