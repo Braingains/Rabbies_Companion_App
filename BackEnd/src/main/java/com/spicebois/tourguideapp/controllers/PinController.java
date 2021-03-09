@@ -1,6 +1,5 @@
 package com.spicebois.tourguideapp.controllers;
 
-import com.spicebois.tourguideapp.enums.CategoryType;
 import com.spicebois.tourguideapp.models.Pin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,9 +20,9 @@ public class PinController {
         return new ResponseEntity<>(pinRepository.findAll(), HttpStatus.OK);
     }
 
-    @GetMapping(value="/pins/categoryType/{categoryType}")
-    public ResponseEntity<List<Pin>> getPinByCategoryType(@PathVariable CategoryType categoryType){
-        return new ResponseEntity<>(pinRepository.findByCategoryType(categoryType), HttpStatus.OK);
+    @GetMapping(value="/pins/category/{category}")
+    public ResponseEntity<List<Pin>> getPinByCategory(@PathVariable String category){
+        return new ResponseEntity<>(pinRepository.findByCategory(category), HttpStatus.OK);
     }
 
 

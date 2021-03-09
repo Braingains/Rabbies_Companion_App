@@ -14,7 +14,9 @@ const MainContainer = () => {
     <Switch>
     <Route path = "/pins" component = {PinContainer} />
     </Switch>
-    <MapContainer />
+    <div>
+        <MapContainer />
+    </div>
     </>
     </Router>
  )

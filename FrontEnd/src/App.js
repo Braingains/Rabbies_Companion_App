@@ -5,7 +5,6 @@ import MainContainer from "./containers/MainContainer";
 
 export default function App() {
 
-  
   return (
     <>
     <div>
@@ -15,10 +14,8 @@ export default function App() {
       <span role="img" aria-label="bus"> 🚎</span>
       </h1>
     </div>
-
     <MainContainer />
     </>
-
   );
 }
 

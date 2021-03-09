@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@iconify/icons-mdi": "^1.1.12",
+    "@iconify/react": "^1.1.4",
     "@react-google-maps/api": "^2.1.1",
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
@@ -37,8 +39,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-    
   },
   "proxy": "http://localhost:8080/"
-  
 }

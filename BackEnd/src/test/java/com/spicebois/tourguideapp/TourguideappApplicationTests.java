@@ -1,6 +1,5 @@
 package com.spicebois.tourguideapp;
 
-import com.spicebois.tourguideapp.enums.CategoryType;
 import com.spicebois.tourguideapp.models.Pin;
 import com.spicebois.tourguideapp.repositories.PinRepository;
 import org.junit.jupiter.api.Test;
@@ -24,14 +23,14 @@ class TourguideappApplicationTests {
 
 	@Test
 	public void createPin(){
-		Pin pin3 = new Pin("The Golden Jobby", CategoryType.ATTRACTION, 55.954119, -3.188402, "Somehow makes me miss the old St James centre", "Matt");
+		Pin pin3 = new Pin("The Golden Jobby", "Attraction", "Somehow makes me miss the old St James centre", "Matt");
 		pinRepository.save(pin3);
 	}
 
 	@Test
 	public void hasCategoryType(){
-		Pin pin3 = new Pin("The Golden Jobby", CategoryType.ATTRACTION, 55.954119, -3.188402, "Somehow makes me miss the old St James centre", "Matt");
-		assertEquals(CategoryType.ATTRACTION, pin3.getCategoryType());
+		Pin pin3 = new Pin("The Golden Jobby", "Attraction", "Somehow makes me miss the old St James centre", "Matt");
+		assertEquals("Attraction", pin3.getCategory());
 	}
 
 }

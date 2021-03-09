@@ -1,8 +1,10 @@
 package com.spicebois.tourguideapp.models;
 
-import com.spicebois.tourguideapp.enums.CategoryType;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="pins")
@@ -12,15 +14,7 @@ public class Pin {
     private String name;
 
     @Column(name="category")
-    @Enumerated(EnumType.STRING)
-//    makes enum compatible with query name thing
-    private CategoryType categoryType;
-
-    @Column(name="lat")
-    private double lat;
-
-    @Column(name="lng")
-    private double lng;
+    private String category;
 
     @Column(name="notes")
     private String notes;
@@ -32,16 +26,19 @@ public class Pin {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @OneToMany(mappedBy = "pin")
+    @JsonIgnoreProperties({"pin"})
+    private List<Location> coordinates;
+
 //    private ArrayList<Routes> tourRoutes;
 
 
-    public Pin(String name, CategoryType categoryType, double lat, double lng, String notes, String user) {
+    public Pin(String name, String category, String notes, String user) {
         this.name = name;
-        this.categoryType = categoryType;
-        this.lat = lat;
-        this.lng = lng;
+        this.category = category;
         this.notes = notes;
         this.user = user;
+        this.coordinates = new ArrayList<>();
     }
 
 //    User may eventually be a class
@@ -59,28 +56,12 @@ public class Pin {
         this.name = name;
     }
 
-    public CategoryType getCategoryType() {
-        return categoryType;
+    public String getCategory() {
+        return category;
     }
 
-    public void setCategoryType(CategoryType categoryType) {
-        this.categoryType = categoryType;
-    }
-
-    public double getLat() {
-        return lat;
-    }
-
-    public void setLat(double lat) {
-        this.lat = lat;
-    }
-
-    public double getLng() {
-        return lng;
-    }
-
-    public void setLng(double lng) {
-        this.lng = lng;
+    public void setCategory(String categoryType) {
+        this.category = category;
     }
 
     public String getNotes() {
@@ -105,5 +86,13 @@ public class Pin {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public List<Location> getCoordinates() {
+        return coordinates;
+    }
+
+    public void setCoordinates(List<Location> coordinates) {
+        this.coordinates = coordinates;
     }
 }

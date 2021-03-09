@@ -1,4 +1,3 @@
-// import { getAllByAltText } from '@testing-library/dom';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import PinList from "../components/pins/PinList";
 import PinDetail from "../components/pins/PinDetail";
