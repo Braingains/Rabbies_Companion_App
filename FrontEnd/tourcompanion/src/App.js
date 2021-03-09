@@ -27,7 +27,7 @@ function App() {
 
     useEffect(() => {
         getAllData();
-    }, [pins]);
+    }, []);
 
     const getAllData = () => {
         
@@ -38,9 +38,17 @@ function App() {
         .then((data) => {
             setPins(data);
         })
-        .then(pins.map(pin => {
+    }
 
-          <Marker key={pin.id} position={
+  return (
+    
+  <MapContainer center={[56.355233, -4.07513]} zoom={8}>
+  <TileLayer
+    attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+  />
+  {pins.map((pin) => {
+          return <Marker key={pin.id} position={
                [pin.coordinates[0].lat, pin.coordinates[0].lng]
           }
           icon={attractionIcon}
@@ -52,21 +60,8 @@ function App() {
               <p>added by: {pin.user}</p>
             </Popup>
           </Marker>
-
-        })
-      )
-    }
-
-  return (
-    
-  <MapContainer center={[56.355233, -4.07513]} zoom={8}>
-  <TileLayer
-    attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-  />
-
+        })}
   </MapContainer>
-  
   )
 }
 
