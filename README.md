@@ -2,6 +2,14 @@ We've been tasked by Rabbie's Tours inc to build an app for tour guides on the r
 This will use the Google Maps api and allow users to add and edit markers on the map for points of interest such as toilets, photostops, parking, cafes, attractions, detours, road closures etc. The kind of info tour guides need to know.
 These markers can be catagorised and filtered by type/tour/author so the user can more easily see relevant info. These markers can have information strings attached for opening hours etc.
 
+TODO:
+	- restructure app into seperate files
+	- get add marker form working (attraction should be dropdown)
+	- get update/delete working
+	- get lat/lng onclick, auto populate the form
+	- use seperate icons based on type
+	- filter to only fetch certain types of markers
+
 MVP:
 
 	- Be able to load and view a map

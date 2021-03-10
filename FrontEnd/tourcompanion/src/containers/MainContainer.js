@@ -1,19 +1,20 @@
-import React from "react";
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-import MapContainer from "./MapContainer";
-import NavBar from "../components/NavBar"
+import React from 'react';
+import NavBar from '../components/NavBar';
+import Map from "./Map"
 
 const MainContainer = () => {
 
 
- return (
-     <Router>
-    <>
-    <NavBar />
-    <MapContainer />
-    </>
-    </Router>
- )
+
+    return (
+        <>
+        <NavBar/>
+        <Map/>
+
+
+        </>
+
+    );
 }
 
 export default MainContainer;
