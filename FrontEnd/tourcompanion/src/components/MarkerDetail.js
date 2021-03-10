@@ -21,7 +21,6 @@ const MarkerDetail = ({pin, onDelete, onUpdate}) => {
 
     return (
         <div className = "component">
-            <h1>Test</h1>
             <MarkerInfo pin = {pin}/>
             <form onSubmit={handleSubmit}></form>
             <button onClick={handleDelete}>Delete {pin.name}</button>

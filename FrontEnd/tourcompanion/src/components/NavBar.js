@@ -10,6 +10,9 @@ const NavBar = () => {
                 <li className="navLink">
                     <a href="/pins/new">Create Pin</a>
                 </li>
+                <li className="navLink">
+                    <a href="/pins/category/:category">Filter By Category</a>
+                </li>
             </ul>
         </header>
     )
