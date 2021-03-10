@@ -4,8 +4,8 @@ These markers can be catagorised and filtered by type/tour/author so the user ca
 
 TODO:
 	- restructure app into seperate files ✓
-	- get add marker form working (attraction should be dropdown)
-	- get update/delete working
+	- get add marker form working (attraction should be dropdown) ✓
+	- get update/delete working, showing in popup
 	- get lat/lng onclick, auto populate the form
 	- use seperate icons based on type
 	- filter to only fetch certain types of markers

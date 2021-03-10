@@ -3,6 +3,7 @@ import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
 import { Icon, L } from "leaflet";
 import Request from "../helpers/request";
 import MarkerForm from "../components/MarkerForm";
+import MarkerDetail from "../components/MarkerDetail";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 const photoIcon = new Icon({
@@ -39,21 +40,58 @@ function Map() {
         })
     }
 
+    const getPinByID = (id) => {
+      return pins.find((pin) => {
+          return pin.id === parseInt(id);
+      });
+  }
+
+    const handleDelete = (id) =>  {
+      const request = new Request();
+        const url = "/api/pins/" + id
+        request.delete(url)
+          .then(() => window.location = "/pins")
+  }
+
     const handlePost = (pin) => {
         const request = new Request();
         request.post("/api/pins", pin)
            .then(() => window.location = '/pins')
       }
 
+    const handleUpdate = (pin) => {
+      const request = new Request();
+      request.patch('/api/pins/' + pin.id, pin).then(() => {
+          window.location = '/pins/' + pin.id
+      })
+    }
+
   return (
     <Router>
     <>
     <Switch>
-    <Route exact path = "/pins/new" render={() =>
-    {return <MarkerForm onCreate={handlePost}/>
-    }}/>
-    </Switch>
+      <Route exact path = "/pins/new" render={() =>
+      {return <MarkerForm onCreate={handlePost}/>
+      }}/>
 
+      <Route exact path="/pins/:id/edit" render={(props) =>{
+      const id = props.match.params.id;
+      const pin = getPinByID(id);
+      return <MarkerForm pin={pin}
+      onUpdate={handleUpdate}
+      />
+      }}/>
+
+      <Route exact path="/pins/:id" render={(props) => {
+      const id = props.match.params.id;
+      const pin = getPinByID(id);
+      return <MarkerDetail pin={pin}
+      onDelete={handleDelete}
+      onUpdate={handleUpdate} 
+      />
+      }} />
+
+    </Switch>
 
   <MapContainer center={[56.355233, -4.07513]} zoom={8}>
   <TileLayer
@@ -64,13 +102,15 @@ function Map() {
           return <Marker key={pin.id} position={
                [pin.lat, pin.lng]
           }
-          icon={attractionIcon}
+          icon={photoIcon}
           >
             <Popup>
-              <h2>{pin.name}</h2>
-              <p>{pin.category}</p>
-              <p>{pin.notes}</p>
-              <p>added by: {pin.user}</p>
+              
+               
+              <MarkerDetail pin={pin}
+              onDelete={handleDelete}
+              onUpdate={handleUpdate} 
+              />
             </Popup>
           </Marker>
         })}
