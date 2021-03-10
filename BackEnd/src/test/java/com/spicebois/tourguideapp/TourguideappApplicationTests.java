@@ -23,13 +23,13 @@ class TourguideappApplicationTests {
 
 	@Test
 	public void createPin(){
-		Pin pin3 = new Pin("The Golden Jobby", "Attraction", "Somehow makes me miss the old St James centre", "Matt");
+		Pin pin3 = new Pin("The Golden Jobby", "Attraction", "Somehow makes me miss the old St James centre", "Matt", 5.1, 5.2);
 		pinRepository.save(pin3);
 	}
 
 	@Test
 	public void hasCategory(){
-		Pin pin3 = new Pin("The Golden Jobby", "Attraction", "Somehow makes me miss the old St James centre", "Matt");
+		Pin pin3 = new Pin("The Golden Jobby", "Attraction", "Somehow makes me miss the old St James centre", "Matt", 69.69, 420.420);
 		assertEquals("Attraction", pin3.getCategory());
 	}
 

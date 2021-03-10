@@ -3,7 +3,7 @@ This will use the Google Maps api and allow users to add and edit markers on the
 These markers can be catagorised and filtered by type/tour/author so the user can more easily see relevant info. These markers can have information strings attached for opening hours etc.
 
 TODO:
-	- restructure app into seperate files
+	- restructure app into seperate files ✓
 	- get add marker form working (attraction should be dropdown)
 	- get update/delete working
 	- get lat/lng onclick, auto populate the form

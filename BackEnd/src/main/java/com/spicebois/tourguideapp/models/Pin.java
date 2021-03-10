@@ -22,23 +22,28 @@ public class Pin {
     @Column(name="user")
     private String user;
 
+    @Column(name="lat")
+    private double lat;
+
+    @Column(name="lng")
+    private double lng;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToMany(mappedBy = "pin")
-    @JsonIgnoreProperties({"pin"})
-    private List<Location> coordinates;
 
 //    private ArrayList<Routes> tourRoutes;
 
 
-    public Pin(String name, String category, String notes, String user) {
+    public Pin(String name, String category, String notes, String user, double lat, double lng) {
         this.name = name;
         this.category = category;
         this.notes = notes;
         this.user = user;
-        this.coordinates = new ArrayList<>();
+        this.lat = lat;
+        this.lng = lng;
+
     }
 
 //    User may eventually be a class
@@ -88,11 +93,19 @@ public class Pin {
         this.id = id;
     }
 
-    public List<Location> getCoordinates() {
-        return coordinates;
+    public double getLat() {
+        return lat;
     }
 
-    public void setCoordinates(List<Location> coordinates) {
-        this.coordinates = coordinates;
+    public void setLat(double lat) {
+        this.lat = lat;
+    }
+
+    public double getLng() {
+        return lng;
+    }
+
+    public void setLng(double lng) {
+        this.lng = lng;
     }
 }

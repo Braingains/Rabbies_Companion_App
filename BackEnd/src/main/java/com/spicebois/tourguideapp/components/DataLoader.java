@@ -1,9 +1,7 @@
 package com.spicebois.tourguideapp.components;
 
 
-import com.spicebois.tourguideapp.models.Location;
 import com.spicebois.tourguideapp.models.Pin;
-import com.spicebois.tourguideapp.repositories.LocationRepository;
 import com.spicebois.tourguideapp.repositories.PinRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
@@ -14,9 +12,6 @@ import org.springframework.stereotype.Component;
 public class DataLoader implements ApplicationRunner {
 
     @Autowired
-    LocationRepository locationRepository;
-
-    @Autowired
     PinRepository pinRepository;
 
     public DataLoader(){
@@ -24,29 +19,17 @@ public class DataLoader implements ApplicationRunner {
     }
 
     public void run(ApplicationArguments args) {
-        Pin edinburghCastle = new Pin("Edinburgh Castle", "Attraction",  "A big castle", "Ewan");
+        Pin edinburghCastle = new Pin("Edinburgh Castle", "Attraction",  "A big castle", "Ewan", 55.948612, -3.200833);
         pinRepository.save(edinburghCastle);
 
-        Pin stirlingCastle = new Pin("Stirling Castle", "Attraction",  "Another big castle", "Matt");
+        Pin stirlingCastle = new Pin("Stirling Castle", "Attraction",  "Another big castle", "Matt", 56.126909, -3.943278);
         pinRepository.save(stirlingCastle);
 
-        Pin fortAugustusBush = new Pin("Fort Augustus Bush", "Attraction",  "Good for a piss", "Ewan");
+        Pin fortAugustusBush = new Pin("Fort Augustus Bush", "Attraction",  "Good for a piss", "Ewan", 57.142757, -4.678571);
         pinRepository.save(fortAugustusBush);
 
-        Pin lochLubnaig = new Pin("Loch Lubnaig", "Attraction",  "Decey view", "Matt");
+        Pin lochLubnaig = new Pin("Loch Lubnaig", "Attraction",  "Decey view", "Matt", 56.277650, -4.283440);
         pinRepository.save(lochLubnaig);
-
-        Location location1 = new Location(55.948612, -3.200833, edinburghCastle);
-        locationRepository.save(location1);
-
-        Location location2 = new Location(56.126909, -3.943278, stirlingCastle);
-        locationRepository.save(location2);
-
-        Location location3 = new Location(57.142757, -4.678571, fortAugustusBush);
-        locationRepository.save(location3);
-
-        Location location4 = new Location(56.277650, -4.283440, lochLubnaig);
-        locationRepository.save(location4);
     }
 
 }
