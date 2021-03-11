@@ -1,3 +1,4 @@
+import './App.css';
 import React from 'react';
 import MainContainer from "./containers/MainContainer";
 
@@ -8,12 +9,8 @@ export default function App() {
   
   return (
     <>
-    <div>
-      <h1>
-      <span role="img" aria-label="Saltire">🏴󠁧󠁢󠁳󠁣󠁴󠁿 </span>
-      Rabbies Tour App v3.0
-      <span role="img" aria-label="bus"> 🚎</span>
-      </h1>
+    <div className="image">
+      
     </div>
 
     <MainContainer />

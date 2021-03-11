@@ -23,8 +23,8 @@ const MarkerDetail = ({pin, onDelete, onUpdate}) => {
         <div className = "component">
             <Marker pin = {pin}/>
             <form onSubmit={handleSubmit}></form>
-            <button onClick={handleDelete}>Delete {pin.name}</button>
-            <a href={editUrl}><button type="button">Edit {pin.name}</button></a>
+            <button id="deletebutton" onClick={handleDelete}>Delete {pin.name}</button>
+            <a href={editUrl}><button id="editbutton" type="button">Edit {pin.name}</button></a>
         </div>
     )
 }

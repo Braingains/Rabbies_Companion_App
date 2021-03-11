@@ -61,7 +61,7 @@ const MapContainer = () => {
     const handleUpdate = (pin) => {
         const request = new Request();
         request.patch('/api/pins/' + pin.id, pin).then(() => {
-            window.location = '/pins/' + pin.id
+            window.location = '/pins/'
         })
     }
 
@@ -121,7 +121,7 @@ const MapContainer = () => {
 
         <GoogleMap
         mapContainerStyle={mapContainerStyle}
-        zoom={7}
+        zoom={8.2}
         center={center}
         options={options}
         onClick={onMapClick}
@@ -136,11 +136,11 @@ const MapContainer = () => {
                 }}
                 icon={{
                     scaledSize: new window.google.maps.Size(25, 25),
-                    url: pin.category === "Attraction" ? "http://127.0.0.1:5500/src/castle.svg" :
-                    (pin.category === "Toilet" ? "http://127.0.0.1:5500/src/loo.svg": 
-                    (pin.category === "Photo Op" ? "http://127.0.0.1:5500/src/camera.svg" :
-                    (pin.category === "Food" ? "http://127.0.0.1:5500/src/food1.svg" :
-                    (pin.category === "Parking" ? "http://127.0.0.1:5500/src/Parkingq.svg" : "http://127.0.0.1:5500/src/marker.svg"))))
+                    url: pin.category === "Attraction" ? "https://www.flaticon.com/svg/vstatic/svg/1021/1021360.svg?token=exp=1615481878~hmac=caae2f0f2fc749a60ffbf8845093ef35" :
+                    (pin.category === "Toilet" ? "https://www.flaticon.com/svg/vstatic/svg/4231/4231239.svg?token=exp=1615481800~hmac=3db1100b358ca977c9de1930129f1699": 
+                    (pin.category === "Photo Op" ? "https://www.flaticon.com/svg/vstatic/svg/2972/2972198.svg?token=exp=1615481659~hmac=e96ce1ba8a9f2f739f8d566e7e2c1ddf" :
+                    (pin.category === "Food" ? "https://www.flaticon.com/svg/vstatic/svg/4223/4223219.svg?token=exp=1615481823~hmac=0dcb7961fb550c26c38386b31f9da7e2" :
+                    (pin.category === "Parking" ? "https://www.flaticon.com/svg/vstatic/svg/4252/4252368.svg?token=exp=1615481859~hmac=311d5b7240f735ea41a2d7e50eeb823f" : "https://www.flaticon.com/svg/vstatic/svg/673/673434.svg?token=exp=1615481931~hmac=29978aa08f6a1c26b1540c3618c61569"))))
                   }}/>
                                 
             })}

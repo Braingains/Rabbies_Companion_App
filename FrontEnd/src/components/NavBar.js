@@ -2,13 +2,13 @@ import React from "react";
 
 const NavBar = () => {
     return(
-        <header>
-            <ul>
-                <li className="navLink">
+        <header id="headerofunorderedlist">
+            <ul id="unorderedlist">
+                {/* <li className="navLink">
                     <a href="/pins">All Pins</a>
-                </li>
+                </li> */}
                 <li className="navLink">
-                    <a href="/pins/new">Create Pin</a>
+                    <a href="/pins/new"><button id="createmarker" >Create Marker</button></a>
                 </li>
             </ul>
         </header>
