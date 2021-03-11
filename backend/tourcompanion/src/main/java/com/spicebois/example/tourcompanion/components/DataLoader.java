@@ -28,7 +28,7 @@ public class DataLoader implements ApplicationRunner {
         Pin fortAugustusBush = new Pin("Fort Augustus Bush", "Attraction",  "Good for a piss", "Ewan", 57.142757, -4.678571);
         pinRepository.save(fortAugustusBush);
 
-        Pin lochLubnaig = new Pin("Loch Lubnaig", "Attraction",  "Decey view", "Matt", 56.277650, -4.283440);
+        Pin lochLubnaig = new Pin("Loch Lubnaig", "Photo Op",  "Decey view", "Matt", 56.277650, -4.283440);
         pinRepository.save(lochLubnaig);
     }
 
